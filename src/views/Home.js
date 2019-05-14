@@ -1,29 +1,41 @@
-import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
-
-import './index.css'
+import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.css";
+import "./index.css";
 
 class Home extends Component {
   constructor() {
     super();
     this.state = {
-      profileImage: '',
-      fullName: '',
+      profileImage: "",
+      fullName: "",
+      email: "",
+      social: "",
       isLogout: false
-    }
+    };
     this.onLogout = this.onLogout.bind(this);
   }
   componentWillMount() {
-    let fbData = JSON.parse(localStorage.getItem('fbData'));
-    let googleData = JSON.parse(localStorage.getItem('googleData'));
+    let fbData = JSON.parse(localStorage.getItem("fbData"));
+    let GData = JSON.parse(localStorage.getItem("GData"));
 
-    if (!fbData && !googleData) {
+    if (!fbData && !GData) {
       this.setState({ isLogout: true });
     }
     if (fbData) {
-      this.setState({ profileImage: fbData.picture, fullName: fbData.name });
-    } else if (googleData) {
-      this.setState({ profileImage: googleData.picture, fullName: googleData.name });
+      this.setState({
+        profileImage: fbData.picture,
+        fullName: fbData.name,
+        email: fbData.email,
+        social: fbData.social
+      });
+    } else if (GData) {
+      this.setState({
+        profileImage: GData.picture,
+        fullName: GData.name,
+        email: GData.email,
+        social: GData.social
+      });
     }
   }
   onLogout(e) {
@@ -33,24 +45,33 @@ class Home extends Component {
   }
   render() {
     if (this.state.isLogout) {
-      return (<Redirect to="/" />);
+      return <Redirect to="/" />;
     }
     return (
-      <div className="Home">
-        <nav>
-          <div className="nav-wrapper">
-            <a className="brand-logo">Logo</a>
-            <ul id="nav-mobile" className="right hide-on-med-and-down">
-              <li>{this.state.fullName}</li>
-              <li>
-                <img className="circle Home-avatar" src={this.state.profileImage} />
-              </li>
-              <li>
-                <i onClick={this.onLogout} className="Home-logout fa fa-power-off"></i>
-              </li>
-            </ul>
+      <div id="data-page" className="container">
+        <div className="row">
+          <div className="col-4 offset-4">
+            <div className="card">
+              <img
+                className="card-img-top"
+                src={this.state.profileImage}
+                alt="Card image cap"
+              />
+              <div className="card-body">
+                <h5 className="card-title">Your data</h5>
+                <ul class="list-group">
+                  <li class="list-group-item">Name: {this.state.fullName}</li>
+                  <li class="list-group-item">Email: {this.state.email}</li>
+                  <li class="list-group-item">Social: {this.state.social}</li>
+                </ul>
+                <a href="#" className="btn btn-dark data-logout" onClick={this.onLogout}>
+                Logout
+                  <i className="fa fa-power-off" />
+                </a>
+              </div>
+            </div>
           </div>
-        </nav>
+        </div>
       </div>
     );
   }

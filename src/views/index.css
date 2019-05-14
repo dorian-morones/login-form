@@ -1,63 +1,48 @@
-html, body {
-  width: 100%;
-  margin: 0;
-  overflow-x: hidden;
-}
+@import url('https://fonts.googleapis.com/css?family=Anton|Roboto+Condensed');
 
-.Login {
+#login-page{
+  margin-top: 20%;
+}
+.card_button_Container{
   display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-}
-
-.Login-box {
-  display: flex;
-  flex-direction: column;
-}
-
-.card-content {
-  display: flex !important;
-  flex-direction: column;
-}
-
-.Home {
-  margin: 1%;
-}
-
-.Home nav {
-  padding: 5px;
-}
-
-.Home-avatar {
-  width: 45px;
-  height: auto;
-}
-
-.Home-logout {
-  font-size: 1.5em;
-  margin: -5px 10px 0px 10px;
-  cursor: pointer;
-}
-
-.card-action{
-display: flex;
 align-items: center;
 align-content: center;
 justify-content: center;
 flex-direction: row;
-list-style: none;
 }
 
+.card-title{
+  font-family: 'Anton', sans-serif;
+  font-size: 20px;
+}
+.card-text{
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+.socialButton{
+  margin: 5px;
+}
 .facebook{
 display: inline-flex;
 align-items: center;
-color: rgba(0, 0, 0, 0.54);
+color: #fff;
 box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px;
-padding: 0px;
+padding: 10px;
 border-radius: 2px;
 border: 1px solid transparent;
 font-size: 14px;
+background-color: #4267b2;
+}
+.facebook i{
+  margin-right: 10px;
 }
 .google{
+}
+
+.data-logout{
+  margin-top: 10px;
+  float: right;
+}
+.data-logout i{
+  margin-left: 10px;
 }

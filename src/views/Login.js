@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import FacebookLogin from 'react-facebook-login';
 import { GoogleLogin } from "react-google-login";
-
+import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
-import 'materialize-css/dist/css/materialize.min.css';
 import { Redirect } from "react-router-dom";
 
 
@@ -53,34 +52,36 @@ class Login extends Component {
       return (<Redirect to="/home/" />);
     }
     return (
-      <div className="Login">
-        <div className="Login-box">
+      <div id="login-page" className="container">
+      <div className="row">
+        <div className="col-6 offset-3">
           <div className="card">
-            <div className="card-content">
-              <span class="card-title">Login with social network applications</span>
-              <p>mLog in with your Facebook or Google account and you can see the information that is extracted from your account.</p>
+            <div className="card-body">
+              <span className="card-title">Login with social network applications</span>
+              <p className="card-text">Log in with your Facebook or Google account and you can see the information that is extracted from your account.</p>
+              <div class="card_button_Container">
+                <FacebookLogin
+                  appId="1260651784103841"
+                  autoload={false}
+                  fields="name, email, picture.width(120)"
+                  callback={this.responseFacebook}
+                  onFailure={this.onFailure}
+                  cssClass="my-facebook-button-class socialButton facebook"
+                  icon="fa-facebook"
+                />
 
+                <GoogleLogin
+                  clientId="372353009990-2kvricu0jcqfkmrchfack3mmc5lv85cu.apps.googleusercontent.com"
+                  autoLoad={false}
+                  onSuccess={this.responseGoogle}
+                  onFailure={this.onFailure}
+                  className="socialButton google"
+                />
+              </div>
             </div>
           </div>
-          <div class="card-action">
-            <FacebookLogin
-              appId="1260651784103841"
-              autoload={false}
-              fields="name, email, picture.width(120)"
-              callback={this.responseFacebook}
-              onFailure={this.onFailure}
-              cssClass="socialButton facebook"
-            />
-
-            <GoogleLogin
-              clientId="372353009990-2kvricu0jcqfkmrchfack3mmc5lv85cu.apps.googleusercontent.com"
-              autoLoad={false}
-              onSuccess={this.responseGoogle}
-              onFailure={this.onFailure}
-              className="socialButton google"
-            />
-          </div>
         </div>
+      </div>
       </div>
     );
   }
