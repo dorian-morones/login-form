@@ -39,3 +39,25 @@ html, body {
   margin: -5px 10px 0px 10px;
   cursor: pointer;
 }
+
+.card-action{
+display: flex;
+align-items: center;
+align-content: center;
+justify-content: center;
+flex-direction: row;
+list-style: none;
+}
+
+.facebook{
+display: inline-flex;
+align-items: center;
+color: rgba(0, 0, 0, 0.54);
+box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 2px 0px, rgba(0, 0, 0, 0.24) 0px 0px 1px 0px;
+padding: 0px;
+border-radius: 2px;
+border: 1px solid transparent;
+font-size: 14px;
+}
+.google{
+}

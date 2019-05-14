@@ -57,25 +57,28 @@ class Login extends Component {
         <div className="Login-box">
           <div className="card">
             <div className="card-content">
-              <FacebookLogin
-                appId="1260651784103841"
-                autoload={false}
-                fields="name, email, picture.width(120)"
-                callback={this.responseFacebook}
-                onFailure={this.onFailure}
-                textButton="Facebook"
-                cssClass="waves-effect waves-light btn blue darken-2"
-                icon="fa fa-facebook" />
-
-              <GoogleLogin
-                clientId="372353009990-2kvricu0jcqfkmrchfack3mmc5lv85cu.apps.googleusercontent.com"
-                autoLoad={false}
-                onSuccess={this.responseGoogle}
-                onFailure={this.onFailure}
-                className="waves-effect waves-light btn lighten-1"
-              />
+              <span class="card-title">Login with social network applications</span>
+              <p>mLog in with your Facebook or Google account and you can see the information that is extracted from your account.</p>
 
             </div>
+          </div>
+          <div class="card-action">
+            <FacebookLogin
+              appId="1260651784103841"
+              autoload={false}
+              fields="name, email, picture.width(120)"
+              callback={this.responseFacebook}
+              onFailure={this.onFailure}
+              cssClass="socialButton facebook"
+            />
+
+            <GoogleLogin
+              clientId="372353009990-2kvricu0jcqfkmrchfack3mmc5lv85cu.apps.googleusercontent.com"
+              autoLoad={false}
+              onSuccess={this.responseGoogle}
+              onFailure={this.onFailure}
+              className="socialButton google"
+            />
           </div>
         </div>
       </div>
